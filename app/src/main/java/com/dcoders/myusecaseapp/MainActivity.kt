@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dcoders.myusecaseapp.playground.BoxDemo
+import com.dcoders.myusecaseapp.playground.CounterDemo
 import com.dcoders.myusecaseapp.playground.LazyListDemo
 import com.dcoders.myusecaseapp.playground.RowColumnDemo
 import com.dcoders.myusecaseapp.ui.theme.MyUsecaseAppTheme
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            LazyListDemo()
+            CounterDemo()
         }
     }
 }
