@@ -17,17 +17,17 @@ import androidx.compose.ui.Modifier
 
 
 @Composable
-fun CounterDemo() {
-    var count by rememberSaveable { mutableIntStateOf(0)}
+fun CounterDemo(counter: Int,
+                onCounterClick:()-> Unit,
+                modifier: Modifier) {
+
     Box(
-        modifier = Modifier
-            .fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Button(onClick = {
-            count++
-        }) {
-            Text("count${count}")
+        Button(onClick =
+            onCounterClick
+        ) {
+            Text("count${counter}")
         }
     }
 }

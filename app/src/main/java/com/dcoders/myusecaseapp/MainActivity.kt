@@ -18,7 +18,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dcoders.myusecaseapp.playground.BoxDemo
 import com.dcoders.myusecaseapp.playground.CounterDemo
+import com.dcoders.myusecaseapp.playground.HoistingDemo
 import com.dcoders.myusecaseapp.playground.LazyListDemo
+import com.dcoders.myusecaseapp.playground.NumberGuessDemo
+import com.dcoders.myusecaseapp.playground.NumberGuessDemoRoot
+import com.dcoders.myusecaseapp.playground.NumberGuessState
 import com.dcoders.myusecaseapp.playground.RowColumnDemo
 import com.dcoders.myusecaseapp.ui.theme.MyUsecaseAppTheme
 
@@ -27,7 +31,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            CounterDemo()
+            NumberGuessDemoRoot()
         }
     }
 }
+
+
