@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,14 +25,18 @@ import com.dcoders.myusecaseapp.playground.NumberGuessDemo
 import com.dcoders.myusecaseapp.playground.NumberGuessDemoRoot
 import com.dcoders.myusecaseapp.playground.NumberGuessState
 import com.dcoders.myusecaseapp.playground.RowColumnDemo
+import com.dcoders.myusecaseapp.playground.room.TodoScreen
+import com.dcoders.myusecaseapp.playground.room.TodoViewModel
 import com.dcoders.myusecaseapp.ui.theme.MyUsecaseAppTheme
 
 class MainActivity : ComponentActivity() {
+    private val viewModel: TodoViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            NumberGuessDemoRoot()
+            TodoScreen(viewModel)
         }
     }
 }

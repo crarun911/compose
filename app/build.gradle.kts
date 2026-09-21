@@ -2,6 +2,8 @@ plugins {
     id("com.android.application")
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
+
 }
 
 android {
@@ -56,7 +58,11 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    val room_version = "3.0.3"
 
+    implementation("androidx.room3:room3-runtime:$room_version")
+    ksp("androidx.room3:room3-compiler:$room_version")
 
     testImplementation(libs.junit)
 

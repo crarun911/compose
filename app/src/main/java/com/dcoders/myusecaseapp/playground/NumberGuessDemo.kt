@@ -19,12 +19,14 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 fun NumberGuessDemoRoot() {
     val viewModel = viewModel<NumberGuessViewModel>()
     val state by viewModel.state.collectAsStateWithLifecycle()
-    NumberGuessDemo(state,viewModel::onAction)
+    NumberGuessDemo(state, viewModel::onAction)
 }
 
 @Composable
-fun NumberGuessDemo(state: NumberGuessState,
-numberGuessAction: (NumberGuessAction)-> Unit) {
+fun NumberGuessDemo(
+    state: NumberGuessState,
+    numberGuessAction: (NumberGuessAction) -> Unit
+) {
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -37,9 +39,22 @@ numberGuessAction: (NumberGuessAction)-> Unit) {
                 numberGuessAction(NumberGuessAction.onNumberTextChanged(newText))
             }
         )
-        Button(onClick = {numberGuessAction(NumberGuessAction.onStartNewButton)}) {
-            Text(text = "Reset")
+
+
+        Button(onClick = { numberGuessAction(NumberGuessAction.onNumberGuessClick) }) {
+            Text(text = "guess number")
         }
+        if (state.guessText != null) {
+            Text("${state.guessText}")
+
+        }
+        if (state.isGuessCorrect) {
+            Button(onClick = { numberGuessAction(NumberGuessAction.onStartNewButton) }) {
+                Text(text = "New Game")
+            }
+        }
+
+
     }
 }
 
