@@ -26,10 +26,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.lazy.items
+import androidx.compose.runtime.collectAsState
 
 @Composable
 fun TodoScreen(viewModel: TodoViewModel) {
-    val todos = viewModel.todos
+    val todos by viewModel.todos.collectAsState()
     var input by remember { mutableStateOf("") }
 
     Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {

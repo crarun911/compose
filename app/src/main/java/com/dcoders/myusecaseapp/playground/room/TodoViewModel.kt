@@ -6,42 +6,36 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlin.collections.emptyList
 
-class TodoViewModel(application: Application): AndroidViewModel(application = application) {
+class TodoViewModel(application: Application,private val todoRepo: TodoRepository): AndroidViewModel(application = application) {
 
-    val dao= TodoDatatbase.getInstance(application).todoDao()
 
-    var todos by mutableStateOf<List<TodoEntity>>(emptyList())
-        private set
-    init {
-        refresh()
-    }
+    var todos: StateFlow<List<TodoEntity>> = todoRepo.getAllTodo()
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = emptyList()
+        )
 
-    fun refresh(){
-        viewModelScope.launch {
-            todos=dao.getAllDao()
-        }
-    }
+
     fun createTodo(title: String){
         viewModelScope.launch {
-            dao.insertToDo(TodoEntity(title = title))
-            refresh()
+            todoRepo.insertTodo(TodoEntity(title = title))
         }
     }
     fun updateTodo(todoEntity: TodoEntity){
         viewModelScope.launch {
-            dao.updateToDo(todoEntity.copy(
-                isDone = !todoEntity.isDone
-            ))
-            refresh()
+            todoRepo.updateTodo(todoEntity)
         }
     }
     fun deleteTodo(todoEntity: TodoEntity){
         viewModelScope.launch {
-            dao.deleteToDo(todoEntity)
-            refresh()
+            todoRepo.deleteTodo(todoEntity)
         }
     }
 
