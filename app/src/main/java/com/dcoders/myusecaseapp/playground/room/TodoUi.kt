@@ -27,6 +27,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.collectAsState
+import com.dcoders.myusecaseapp.playground.domain.Todo
 
 @Composable
 fun TodoScreen(viewModel: TodoViewModel) {
@@ -70,7 +71,7 @@ fun TodoScreen(viewModel: TodoViewModel) {
 }
 
 @Composable
-fun TodoRow(todo: TodoEntity, onToggle: () -> Unit, onDelete: () -> Unit) {
+fun TodoRow(todo: Todo, onToggle: () -> Unit, onDelete: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()

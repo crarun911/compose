@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
     private val viewModel: TodoViewModel by viewModels {
         TodoViewModelFactory(
             application,
-            (application as MyClass).container.todoRepository
+            (application as MyClass).container
         )
     }
 

@@ -1,21 +1,25 @@
 package com.dcoders.myusecaseapp.playground.room
 
+import com.dcoders.myusecaseapp.playground.domain.Todo
+import com.dcoders.myusecaseapp.playground.util.toDmain
+import com.dcoders.myusecaseapp.playground.util.toEntity
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 class TodoRepository(val dao: TodoDao) {
 
 
-    fun getAllTodo(): Flow<List<TodoEntity>> {
-         return dao.getAllDao()
+    fun getAllTodo(): Flow<List<Todo>> {
+         return dao.getAllDao().map { entities -> entities.map { it.toDmain() } }
     }
 
-    suspend fun insertTodo(todoEntity: TodoEntity){
-        dao.insertToDo(todoEntity =todoEntity )
+    suspend fun insertTodo(title: String){
+        dao.insertToDo(Todo(id=0,title = title,isDone = false).toEntity() )
     }
-    suspend fun updateTodo(todoEntity: TodoEntity){
-        dao.updateToDo(todoEntity.copy(isDone = !todoEntity.isDone) )
+    suspend fun updateTodo(todo: Todo){
+        dao.updateToDo(todo.copy(isDone = !todo.isDone).toEntity() )
     }
-    suspend fun deleteTodo(todoEntity: TodoEntity){
-        dao.deleteToDo(todoEntity =todoEntity )
+    suspend fun deleteTodo(todo: Todo){
+        dao.deleteToDo(todo.toEntity() )
     }
 }

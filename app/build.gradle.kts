@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt.android)
     alias(libs.plugins.ksp)
 
 }
@@ -63,6 +64,8 @@ dependencies {
 
     implementation("androidx.room3:room3-runtime:$room_version")
     ksp("androidx.room3:room3-compiler:$room_version")
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    ksp("com.google.dagger:hilt-android-compiler:2.51.1")
 
     testImplementation(libs.junit)
 
