@@ -9,11 +9,11 @@ import com.dcoders.myusecaseapp.playground.usecases.InsertTodoUseCase
 import com.dcoders.myusecaseapp.playground.usecases.UpdateTodoUseCase
 
 class TodoAppContainer(application: Application) {
-    private val database= TodoDatatbase.getInstance(application)
-    val todoRepository: TodoRepository by lazy { TodoRepository(database.todoDao())}
-        val todoGetUseCase by lazy { GetTodoUseCase(todoRepository) }
-        val todoUpdateUseCase by lazy { UpdateTodoUseCase(todoRepository) }
-        val todoInsertUseCase by lazy { InsertTodoUseCase(todoRepository) }
-        val todoDeleteUseCase by lazy { DeleteTodoUseCase(todoRepository) }
+//    private val database= TodoDatatbase.getInstance(application)
+//    val todoRepository: TodoRepository by lazy { TodoRepository(database.todoDao())}
+//        val todoGetUseCase by lazy { GetTodoUseCase(todoRepository) }
+//        val todoUpdateUseCase by lazy { UpdateTodoUseCase(todoRepository) }
+//        val todoInsertUseCase by lazy { InsertTodoUseCase(todoRepository) }
+//        val todoDeleteUseCase by lazy { DeleteTodoUseCase(todoRepository) }
 
 }

@@ -9,5 +9,7 @@ data class TodoEntity(
     @PrimaryKey(autoGenerate = true)
     val id:Int=0,
     val  title: String,
-    val isDone:Boolean=false
+    val isDone:Boolean=false,
+    val updatedAt: Long = System.currentTimeMillis()
+
 )

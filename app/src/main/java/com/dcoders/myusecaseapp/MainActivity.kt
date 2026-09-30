@@ -31,16 +31,12 @@ import com.dcoders.myusecaseapp.playground.room.TodoDatatbase
 import com.dcoders.myusecaseapp.playground.room.TodoRepository
 import com.dcoders.myusecaseapp.playground.room.TodoScreen
 import com.dcoders.myusecaseapp.playground.room.TodoViewModel
-import com.dcoders.myusecaseapp.playground.room.TodoViewModelFactory
 import com.dcoders.myusecaseapp.ui.theme.MyUsecaseAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    private val viewModel: TodoViewModel by viewModels {
-        TodoViewModelFactory(
-            application,
-            (application as MyClass).container
-        )
-    }
+    private val viewModel: TodoViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

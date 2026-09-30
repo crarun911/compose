@@ -3,7 +3,8 @@ package com.dcoders.myusecaseapp.playground.usecases
 import com.dcoders.myusecaseapp.playground.domain.Todo
 import com.dcoders.myusecaseapp.playground.room.TodoEntity
 import com.dcoders.myusecaseapp.playground.room.TodoRepository
+import javax.inject.Inject
 
-class DeleteTodoUseCase (private val repository: TodoRepository) {
+class DeleteTodoUseCase @Inject constructor (private val repository: TodoRepository) {
     suspend operator fun invoke(todo: Todo) = repository.deleteTodo(todo )
 }

@@ -53,6 +53,9 @@ fun TodoScreen(viewModel: TodoViewModel) {
             }) {
                 Text("Add")
             }
+            Button(onClick = { viewModel.sync() }) {
+                Text("Sync")
+            }
         }
 
         Spacer(modifier = Modifier.height(16.dp))

@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "My Usecase App"
 include(":app")
 include(":myapplication")
+include(":playground")
