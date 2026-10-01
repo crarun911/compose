@@ -10,6 +10,7 @@ fun main() {
         }
     ){
         println("Hello there from b ")
+
     }
 
     funPrint(funcExe = {println("Hello there1")}) { println("Hello there from b2") }
