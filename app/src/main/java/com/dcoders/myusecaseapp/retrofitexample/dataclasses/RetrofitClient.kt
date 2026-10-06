@@ -20,7 +20,7 @@ object RetrofitClient {
         .build()
 
 
-    private val wizardWorldApiService: WizardWrorldApiService by lazy{
+     val wizardWorldApiService: WizardWrorldApiService by lazy{
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
